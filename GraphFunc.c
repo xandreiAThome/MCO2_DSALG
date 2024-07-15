@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "MCO2.h"
+#include "Graph.h"
 
 void initStr16(Str16 s)
 {
@@ -20,7 +20,7 @@ void initGraph(struct nodeTag *graph, int size)
     }
 }
 
-struct nodeTag *getInput(char *fileName)
+struct nodeTag *getInput(char *fileName, int *nodeQuanti)
 {
     FILE *inPtr;
     if ((inPtr = fopen(fileName, "r")) == NULL)
@@ -30,6 +30,7 @@ struct nodeTag *getInput(char *fileName)
 
     int nodeAmount;
     fscanf(inPtr, "%d\n", &nodeAmount);
+    *nodeQuanti = nodeAmount;
 
     struct nodeTag *graph = malloc(sizeof(struct nodeTag) * nodeAmount);
     initGraph(graph, nodeAmount);
@@ -76,4 +77,8 @@ struct nodeTag *getInput(char *fileName)
     }
 
     return graph;
+}
+
+void BFS(struct nodeTag *graph)
+{
 }

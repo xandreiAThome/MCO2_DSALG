@@ -1,11 +1,14 @@
-#include "MCO2.h"
+#include "Graph.h"
+#include "Queue.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "graph.c"
+#include "GraphFunc.c"
 
 int main()
 {
-    struct nodeTag *graph = getInput("text/input.txt");
+    int nodeAmount;
+    struct nodeTag *graph = getInput("text/input.txt", &nodeAmount);
 
-    printf("%s", graph[0].connectedNode->connectedNode->name);
+    printf("%s\n", graph[0].connectedNode->name);
+    printf("%d", nodeAmount);
 }
