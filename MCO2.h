@@ -3,9 +3,10 @@
 
 typedef char Str16[17];
 
-struct Node{
+typedef struct nodeTag
+{
     Str16 name;
-    int connected = 0;
-};
+    struct nodeTag *connectedNode;
+} Node;
 
 #endif
