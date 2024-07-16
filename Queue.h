@@ -23,5 +23,6 @@ void QueueHead(struct queueTag *q, char *dest);
 void QueueTail(struct queueTag *q, char *dest);
 int QueueEmpty(struct queueTag *q);
 int QueueFull(struct queueTag *q);
+void initStr20(Str20 str)
 
 #endif

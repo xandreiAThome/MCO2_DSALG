@@ -2,6 +2,14 @@
 #include <string.h>
 #include "Queue.h"
 
+void initStr20(Str20 str)
+{
+    for (int i = 0; i < strlen(str); i++)
+    {
+        str[i] = '\0';
+    }
+}
+
 /*
 @param *s: the data that will be inserted into the queue: MUST BE a String
 @returns the new created node n

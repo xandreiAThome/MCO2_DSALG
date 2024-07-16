@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "Graph.h"
+#include "Queue.h"
+#include "QueueFunc.c"
 
 void initStr16(Str16 s)
 {
@@ -79,6 +82,65 @@ struct nodeTag *getInput(char *fileName, int *nodeQuanti)
     return graph;
 }
 
-void BFS(struct nodeTag *graph)
+void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode)
 {
+    int visited[nodeQuanti];
+    for (int i = 0; i < nodeQuanti; i++)
+    {
+        visited[i] = 0;
+    }
+
+    int startIndex = getIndexGivenNodeToken(graph, startNode, nodeQuanti);
+
+    struct queueTag *queue = CreateQueue();
+    visited[startIndex] = 1;
+    Enqueue(queue, graph[startIndex].name);
+
+    while (!QueueEmpty(queue))
+    {
+        Str16 currentNode = "";
+        Dequeue(queue, currentNode);
+        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
+        printf("%s, ", currentNode);
+
+        struct nodeTag *tempNode = &graph[currentIndex];
+
+        while (tempNode != NULL)
+        {
+            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->name, nodeQuanti);
+            if (!visited[neighborIndex])
+            {
+                visited[neighborIndex] = 1;
+                Enqueue(queue, tempNode->name);
+            }
+            tempNode = tempNode->connectedNode;
+        }
+    }
+}
+
+int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeToken, int nodeQuanti)
+{
+    for (int i = 0; i < nodeQuanti; i++)
+    {
+        if (strcmp(toLower(graph[i].name), toLower(nodeToken)) == 0)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+char *toLower(char *str)
+{
+    char *lower = (char *)malloc(sizeof(char) * strlen(str));
+
+    for (int i = 0; i < strlen(str); i++)
+    {
+        lower[i] = tolower(str[i]);
+    }
+
+    lower[strlen(str)] = '\0';
+
+    return lower;
 }

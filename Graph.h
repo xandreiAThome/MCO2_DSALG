@@ -25,6 +25,8 @@ typedef struct queueTag
 void initStr16(Str16 s);
 void initGraph(struct nodeTag *graph, int size);
 struct nodeTag *getInput(char *fileName, int *nodeQuanti);
-void BFS(struct nodeTag *graph);
+void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode);
+int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeTokenm, int nodeQuanti);
+char *toLower(char *str);
 
 #endif
