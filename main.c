@@ -6,12 +6,13 @@
 
 int main()
 {
-    // TODO, store output to text file
     int nodeAmount;
     Str16 inputFile;
     printf("Input filename: ");
     scanf("%s", inputFile);
     struct nodeTag *graph = getInput(inputFile, &nodeAmount);
+
+    FILE *outputFile = fopen("TRAVERSAL.TXT", "w");
 
     if (graph != NULL)
     {
@@ -25,8 +26,9 @@ int main()
         }
         else
         {
-            displayEdgeCount(graph, nodeAmount);
-            BFS(graph, nodeAmount, startNode);
+            displayEdgeCount(graph, nodeAmount, outputFile);
+            BFS(graph, nodeAmount, startNode, outputFile);
         }
     }
+    fclose(outputFile);
 }

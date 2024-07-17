@@ -1,5 +1,6 @@
 #ifndef MCO2_H_
 #define MCO2_H_
+#include <stdio.h>
 
 typedef char Str16[17];
 typedef char Str20[21];
@@ -25,9 +26,9 @@ typedef struct queueTag
 void initStr16(Str16 s);
 void initGraph(struct nodeTag *graph, int size);
 struct nodeTag *getInput(char *fileName, int *nodeQuanti);
-void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode);
+void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile);
 int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeTokenm, int nodeQuanti);
 char *toLower(char *str);
-void displayEdgeCount(struct nodeTag *graph, int nodeAmount);
+void displayEdgeCount(struct nodeTag *graph, int nodeAmount, FILE *outputFile);
 
 #endif

@@ -6,7 +6,7 @@
 #include "Queue.h"
 #include "QueueFunc.c"
 
-void displayEdgeCount(struct nodeTag *graph, int nodeAmount)
+void displayEdgeCount(struct nodeTag *graph, int nodeAmount, FILE *outputFile)
 {
     for (int i = 0; i < nodeAmount; i++)
     {
@@ -18,6 +18,7 @@ void displayEdgeCount(struct nodeTag *graph, int nodeAmount)
             tempNode = tempNode->connectedNode;
         }
         printf("%s \t%d\n", graph[i].name, k);
+        fprintf(outputFile, "%s \t%d\n", graph[i].name, k);
     }
 }
 
@@ -94,11 +95,12 @@ struct nodeTag *getInput(char *fileName, int *nodeQuanti)
             tempS[strlen(tempS)] = tempC;
         }
     }
+    fclose(inPtr);
 
     return graph;
 }
 
-void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode)
+void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
 {
     int visited[nodeQuanti];
     for (int i = 0; i < nodeQuanti; i++)
@@ -112,12 +114,15 @@ void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode)
     visited[startIndex] = 1;
     Enqueue(queue, graph[startIndex].name);
 
+    fprintf(outputFile, "\nBFS: ");
+    printf("\nBFS: ");
     while (!QueueEmpty(queue))
     {
         Str16 currentNode = "";
         Dequeue(queue, currentNode);
         int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
         printf("%s ", currentNode);
+        fprintf(outputFile, "%s ", currentNode);
 
         struct nodeTag *tempNode = &graph[currentIndex];
 
@@ -132,6 +137,8 @@ void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode)
             tempNode = tempNode->connectedNode;
         }
     }
+    fprintf(outputFile, "\n");
+    printf("\n");
 }
 
 int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeToken, int nodeQuanti)
