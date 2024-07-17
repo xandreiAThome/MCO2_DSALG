@@ -6,14 +6,27 @@
 
 int main()
 {
+    // TODO, store output to text file
     int nodeAmount;
-    struct nodeTag *graph = getInput("text/input.txt", &nodeAmount);
+    Str16 inputFile;
+    printf("Input filename: ");
+    scanf("%s", inputFile);
+    struct nodeTag *graph = getInput(inputFile, &nodeAmount);
 
-    // printf("%s\n", graph[0].connectedNode->name);
+    if (graph != NULL)
+    {
 
-    // printf("%d\n", getIndexGivenNodeToken(graph, "HAL", nodeAmount));
-
-    displayEdgeCount(graph, nodeAmount);
-
-    BFS(graph, nodeAmount, "Clark");
+        Str16 startNode;
+        printf("Input start vertex for the traversal: ");
+        scanf("%s", startNode);
+        if (getIndexGivenNodeToken(graph, startNode, nodeAmount) == -1)
+        {
+            printf("Vertex %s not found\n", startNode);
+        }
+        else
+        {
+            displayEdgeCount(graph, nodeAmount);
+            BFS(graph, nodeAmount, startNode);
+        }
+    }
 }

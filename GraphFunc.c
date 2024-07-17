@@ -44,6 +44,7 @@ struct nodeTag *getInput(char *fileName, int *nodeQuanti)
     if ((inPtr = fopen(fileName, "r")) == NULL)
     {
         printf("File doesn't exist\n");
+        return NULL;
     }
 
     int nodeAmount;
