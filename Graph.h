@@ -28,5 +28,6 @@ struct nodeTag *getInput(char *fileName, int *nodeQuanti);
 void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode);
 int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeTokenm, int nodeQuanti);
 char *toLower(char *str);
+void displayEdgeCount(struct nodeTag *graph, int nodeAmount);
 
 #endif

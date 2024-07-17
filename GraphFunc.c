@@ -6,6 +6,21 @@
 #include "Queue.h"
 #include "QueueFunc.c"
 
+void displayEdgeCount(struct nodeTag *graph, int nodeAmount)
+{
+    for (int i = 0; i < nodeAmount; i++)
+    {
+        int k = 0;
+        struct nodeTag *tempNode = graph[i].connectedNode;
+        while (tempNode != NULL)
+        {
+            k++;
+            tempNode = tempNode->connectedNode;
+        }
+        printf("%s \t%d\n", graph[i].name, k);
+    }
+}
+
 void initStr16(Str16 s)
 {
     for (int i = 0; i < 17; i++)
@@ -101,7 +116,7 @@ void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode)
         Str16 currentNode = "";
         Dequeue(queue, currentNode);
         int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
-        printf("%s, ", currentNode);
+        printf("%s ", currentNode);
 
         struct nodeTag *tempNode = &graph[currentIndex];
 
