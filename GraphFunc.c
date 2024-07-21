@@ -170,9 +170,30 @@ char *toLower(char *str)
     return lower;
 }
 
+/*
+DFS = a search algorithm for traversing a tree or graph data structure
+    1. Pick a route
+    2. Keep going until you reach a dead end, or a perviously visited node
+    3.Backtrack to last node that has unvisited adjacent neighbors
+*/
+
 void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile){
 
     Stack *s = NULL;
     
+    int visited[nodeQuanti];
+    for(int i = 0; i < nodeQuanti; i++){
+        visited[i] = 0;
+    }
 
+    int startIndex = getIndexGivenNodeToken(graph,startNode,nodeQuanti);
+
+    Push(s, &graph[startIndex]);
+    fprintf(outputFile, "\nDFS: ");
+    printf("\nDFS: ");
+
+    while(!StackEmpty(s)){
+
+
+    }
 }
