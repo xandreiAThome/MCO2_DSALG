@@ -8,6 +8,13 @@
 #include "Stack.h"
 #include "StackFunc.c"
 
+/**
+ * @brief Displays how many edges are connected to each node
+ *
+ * @param graph
+ * @param nodeAmount
+ * @param outputFile
+ */
 void displayEdgeCount(struct nodeTag *graph, int nodeAmount, FILE *outputFile)
 {
     for (int i = 0; i < nodeAmount; i++)
@@ -32,6 +39,12 @@ void initStr16(Str16 s)
     }
 }
 
+/**
+ * @brief Initializes the graph data struct to empty
+ *
+ * @param graph
+ * @param size
+ */
 void initGraph(struct nodeTag *graph, int size)
 {
     for (int i = 0; i < size; i++)
@@ -41,6 +54,13 @@ void initGraph(struct nodeTag *graph, int size)
     }
 }
 
+/**
+ * @brief Get the Input graph from a given text file
+ *
+ * @param fileName
+ * @param nodeQuanti pointer to an int, which will be assigned the number of nodes in the graph
+ * @return struct nodeTag*
+ */
 struct nodeTag *getInput(char *fileName, int *nodeQuanti)
 {
     FILE *inPtr;
@@ -102,6 +122,14 @@ struct nodeTag *getInput(char *fileName, int *nodeQuanti)
     return graph;
 }
 
+/**
+ * @brief Gives the order of visit for the breath first rseasrch
+ *
+ * @param graph
+ * @param nodeQuanti
+ * @param startNode
+ * @param outputFile
+ */
 void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
 {
     int visited[nodeQuanti];
@@ -143,6 +171,14 @@ void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFil
     printf("\n");
 }
 
+/**
+ * @brief Get the Index Given Node Token object
+ *
+ * @param graph
+ * @param nodeToken
+ * @param nodeQuanti
+ * @return  the index of the given node
+ */
 int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeToken, int nodeQuanti)
 {
     for (int i = 0; i < nodeQuanti; i++)
@@ -156,6 +192,12 @@ int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeToken, int nodeQuant
     return -1;
 }
 
+/**
+ * @brief Converts string to lowercase
+ *
+ * @param str
+ * @return new string
+ */
 char *toLower(char *str)
 {
     char *lower = (char *)malloc(sizeof(char) * strlen(str));
@@ -182,9 +224,10 @@ DFS = a search algorithm for traversing a tree or graph data structure
 void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
 {
     Stack *s = NULL;
-    
+
     int visited[nodeQuanti];
-    for(int i = 0; i < nodeQuanti; i++){
+    for (int i = 0; i < nodeQuanti; i++)
+    {
         visited[i] = 0;
     }
 
