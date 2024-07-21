@@ -167,3 +167,7 @@ char *toLower(char *str)
 
     return lower;
 }
+
+void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile){
+
+}
