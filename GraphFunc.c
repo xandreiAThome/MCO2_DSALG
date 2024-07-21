@@ -174,11 +174,14 @@ char *toLower(char *str)
 DFS = a search algorithm for traversing a tree or graph data structure
     1. Pick a route
     2. Keep going until you reach a dead end, or a perviously visited node
-    3.Backtrack to last node that has unvisited adjacent neighbors
+    3. Backtrack to last node that has unvisited adjacent neighbors
+
+    Put the first node in the stack -> Push all the unvisited to the stack until it reaches a dead end or another visited -> Back track until it sees another node that has a unvisited adjacent -> Pop everything until the one with unvisited adjacent -> repeat
 */
 
-void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile){
 
+void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
+{
     Stack *s = NULL;
     
     int visited[nodeQuanti];
@@ -186,9 +189,10 @@ void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFi
         visited[i] = 0;
     }
 
-    int startIndex = getIndexGivenNodeToken(graph,startNode,nodeQuanti);
+    int startIndex = getIndexGivenNodeToken(graph, startNode, nodeQuanti);
 
     Push(&s, graph[startIndex].name);
+    visited[startIndex] = 1;
     fprintf(outputFile, "\nDFS: ");
     printf("\nDFS: ");
 
@@ -196,19 +200,19 @@ void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFi
     {
         Str16 currentNode = "";
         Pop(&s, currentNode);
-        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
         printf("%s ", currentNode);
         fprintf(outputFile, "%s ", currentNode);
 
+        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
         struct nodeTag *tempNode = &graph[currentIndex];
 
-        while (tempNode != NULL)
+        while (tempNode->connectedNode != NULL)
         {
-            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->name, nodeQuanti);
+            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->connectedNode->name, nodeQuanti);
             if (!visited[neighborIndex])
             {
                 visited[neighborIndex] = 1;
-                Push(&s, tempNode->name);
+                Push(&s, tempNode->connectedNode->name);
             }
             tempNode = tempNode->connectedNode;
         }
@@ -217,3 +221,5 @@ void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFi
     fprintf(outputFile, "\n");
     printf("\n");
 }
+
+
