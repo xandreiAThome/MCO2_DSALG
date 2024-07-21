@@ -179,7 +179,6 @@ DFS = a search algorithm for traversing a tree or graph data structure
     Put the first node in the stack -> Push all the unvisited to the stack until it reaches a dead end or another visited -> Back track until it sees another node that has a unvisited adjacent -> Pop everything until the one with unvisited adjacent -> repeat
 */
 
-/*
 void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
 {
     Stack *s = NULL;
@@ -213,95 +212,6 @@ void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFil
             {
                 visited[neighborIndex] = 1;
                 Push(&s, tempNode->connectedNode->name);
-            }
-            tempNode = tempNode->connectedNode;
-        }
-    }
-
-    fprintf(outputFile, "\n");
-    printf("\n");
-}
-*/
-/*
-void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
-{
-    Stack *s = NULL;
-    
-    int visited[nodeQuanti];
-    for(int i = 0; i < nodeQuanti; i++){
-        visited[i] = 0;
-    }
-
-    int startIndex = getIndexGivenNodeToken(graph, startNode, nodeQuanti);
-
-    Push(&s, graph[startIndex].name);
-    visited[startIndex] = 1;
-    fprintf(outputFile, "\nDFS: ");
-    printf("\nDFS: ");
-
-    while (!StackEmpty(s))
-    {
-        Str16 currentNode = "";
-        Pop(&s, currentNode);
-        printf("%s ", currentNode);
-        fprintf(outputFile, "%s ", currentNode);
-
-        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
-        struct nodeTag *tempNode = &graph[currentIndex];
-
-        while (tempNode->connectedNode != NULL)
-        {
-            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->connectedNode->name, nodeQuanti);
-            if (!visited[neighborIndex])
-            {
-                visited[neighborIndex] = 1;
-                Push(&s, tempNode->connectedNode->name);
-                break; // Break here to explore the current branch further
-            }
-            tempNode = tempNode->connectedNode;
-        }
-    }
-
-    fprintf(outputFile, "\n");
-    printf("\n");
-}
-*/
-
-void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
-{
-    Stack *s = NULL;
-    
-    int visited[nodeQuanti];
-    for(int i = 0; i < nodeQuanti; i++){
-        visited[i] = 0;
-    }
-
-    int startIndex = getIndexGivenNodeToken(graph, startNode, nodeQuanti);
-
-    Push(&s, graph[startIndex].name);
-    visited[startIndex] = 1;
-    fprintf(outputFile, "\nDFS: ");
-    printf("\nDFS: ");
-
-    while (!StackEmpty(s))
-    {
-        Str16 currentNode = "";
-        Pop(&s, currentNode);
-        printf("%s ", currentNode);
-        fprintf(outputFile, "%s ", currentNode);
-
-        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
-        struct nodeTag *tempNode = &graph[currentIndex];
-
-        while (tempNode->connectedNode != NULL)
-        {
-            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->connectedNode->name, nodeQuanti);
-            if (!visited[neighborIndex])
-            {
-                Push(&s, currentNode); // Push the current node back to the stack
-                Push(&s, tempNode->connectedNode->name); // Push the unvisited neighbor to the stack
-                visited[neighborIndex] = 1;
-                break; // Break here to explore the current branch further
             }
             tempNode = tempNode->connectedNode;
         }
