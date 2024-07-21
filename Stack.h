@@ -10,11 +10,13 @@ typedef struct stackTag
     struct stackTag *nextNode;
 } Stack;
 
+/*
 typedef struct qNodeTag
 {
     Str20 cToken;
     struct qNodeTag *nextNode;
 } qNode;
+*/
 
 int StackFull();
 int StackEmpty(struct stackTag *stack);

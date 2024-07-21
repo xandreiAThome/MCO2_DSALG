@@ -13,6 +13,7 @@ void initStr20(Str20 s)
     }
 }
 
+/*
 void initStr2(Str2 s)
 {
     for (int i = 0; i < 3; i++)
@@ -20,6 +21,7 @@ void initStr2(Str2 s)
         s[i] = '\0';
     }
 }
+*/
 
 /*
     @param **stack: The pointer to the pointer of the stack that the data will be inserted into

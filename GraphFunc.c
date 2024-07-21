@@ -5,6 +5,8 @@
 #include "Graph.h"
 #include "Queue.h"
 #include "QueueFunc.c"
+#include "Stack.h"
+#include "StackFunc.c"
 
 void displayEdgeCount(struct nodeTag *graph, int nodeAmount, FILE *outputFile)
 {
@@ -169,5 +171,8 @@ char *toLower(char *str)
 }
 
 void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile){
+
+    Stack *s = NULL;
+    
 
 }
