@@ -1,4 +1,4 @@
-//#ifndef MCO2_H_
+#ifndef MCO2_H_
 #define MCO2_H_
 
 typedef char Str20[21];
@@ -24,7 +24,7 @@ void Top(struct stackTag *stack, char *dest);
 void Pop(struct stackTag **stack, char *dest);
 int Push(struct stackTag **stack, char *c);
 
-void initStr20(Str20 s);
-void initStr2(Str2 s);
+//void initStr20(Str20 s);
+//void initStr2(Str2 s);
 
-//#endif
+#endif

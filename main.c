@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "GraphFunc.c"
+#include "Stack.h"
 
 int main()
 {
@@ -28,6 +29,7 @@ int main()
         {
             displayEdgeCount(graph, nodeAmount, outputFile);
             BFS(graph, nodeAmount, startNode, outputFile);
+            DFS(graph, nodeAmount, startNode, outputFile);
         }
     }
     fclose(outputFile);

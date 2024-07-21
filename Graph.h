@@ -23,6 +23,12 @@ typedef struct queueTag
     struct qNodeTag *tail;
 } Queue;
 
+typedef struct stackTag
+{
+    Str20 cToken;
+    struct stackTag *nextNode;
+} Stack;
+
 void initStr16(Str16 s);
 void initGraph(struct nodeTag *graph, int size);
 struct nodeTag *getInput(char *fileName, int *nodeQuanti);
@@ -30,5 +36,5 @@ void BFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFil
 int getIndexGivenNodeToken(struct nodeTag *graph, char *nodeTokenm, int nodeQuanti);
 char *toLower(char *str);
 void displayEdgeCount(struct nodeTag *graph, int nodeAmount, FILE *outputFile);
-
+void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile);
 #endif

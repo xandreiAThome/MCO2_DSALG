@@ -5,6 +5,7 @@
 
 // TO Make a new Stack just declare a Stack pointer variable and init it to NULL
 
+/*
 void initStr20(Str20 s)
 {
     for (int i = 0; i < 21; i++)
@@ -12,7 +13,7 @@ void initStr20(Str20 s)
         s[i] = '\0';
     }
 }
-
+*/
 /*
 void initStr2(Str2 s)
 {

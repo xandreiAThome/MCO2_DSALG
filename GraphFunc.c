@@ -188,12 +188,32 @@ void DFS (struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFi
 
     int startIndex = getIndexGivenNodeToken(graph,startNode,nodeQuanti);
 
-    Push(s, &graph[startIndex]);
+    Push(&s, graph[startIndex].name);
     fprintf(outputFile, "\nDFS: ");
     printf("\nDFS: ");
 
-    while(!StackEmpty(s)){
+    while (!StackEmpty(s))
+    {
+        Str16 currentNode = "";
+        Pop(&s, currentNode);
+        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
+        printf("%s ", currentNode);
+        fprintf(outputFile, "%s ", currentNode);
 
+        struct nodeTag *tempNode = &graph[currentIndex];
 
+        while (tempNode != NULL)
+        {
+            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->name, nodeQuanti);
+            if (!visited[neighborIndex])
+            {
+                visited[neighborIndex] = 1;
+                Push(&s, tempNode->name);
+            }
+            tempNode = tempNode->connectedNode;
+        }
     }
+
+    fprintf(outputFile, "\n");
+    printf("\n");
 }
