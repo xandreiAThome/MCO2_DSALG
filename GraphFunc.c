@@ -121,7 +121,7 @@ struct nodeTag *getInput(char *fileName, int *nodeQuanti)
 }
 
 /**
- * @brief Gives the order of visit for the breath first rseasrch
+ * @brief Gives the order of visit for the breath first search
  *
  * @param graph
  * @param nodeQuanti
@@ -219,6 +219,14 @@ DFS = a search algorithm for traversing a tree or graph data structure
     Put the first node in the stack -> Push all the unvisited to the stack until it reaches a dead end or another visited -> Back track until it sees another node that has a unvisited adjacent -> Pop everything until the one with unvisited adjacent -> repeat
 */
 
+/**
+ * @brief gives the order of visits for the depth first search
+ * 
+ * @param graph
+ * @param nodeQuanti
+ * @param startNode
+ * @param outputFile
+ */
 void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile, int visited[])
 {
 
