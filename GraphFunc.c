@@ -224,7 +224,7 @@ DFS = a search algorithm for traversing a tree or graph data structure
  * @param nodeQuanti
  * @param startNode
  * @param outputFile
- */
+ */ 
 void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile, int visited[])
 {
 
