@@ -1,11 +1,11 @@
+#include "Graph.h"
+#include "Queue.h"
+#include "Stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "Graph.h"
-#include "Queue.h"
 #include "QueueFunc.c"
-#include "Stack.h"
 #include "StackFunc.c"
 
 /**

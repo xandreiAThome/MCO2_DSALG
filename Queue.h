@@ -1,5 +1,5 @@
-#ifndef MCO2_H_
-#define MCO2_H_
+#ifndef QUEUE_H_INCLUDED
+#define QUEUE_H_INCLUDED
 
 typedef char Str20[21];
 
@@ -23,6 +23,6 @@ void QueueHead(struct queueTag *q, char *dest);
 void QueueTail(struct queueTag *q, char *dest);
 int QueueEmpty(struct queueTag *q);
 int QueueFull(struct queueTag *q);
-void initStr20(Str20 str)
+void initStr20(Str20 str);
 
 #endif

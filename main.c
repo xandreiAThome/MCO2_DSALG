@@ -1,9 +1,7 @@
 #include "Graph.h"
-#include "Queue.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "GraphFunc.c"
-#include "Stack.h"
 
 int main()
 {

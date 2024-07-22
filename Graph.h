@@ -1,5 +1,5 @@
-#ifndef MCO2_H_
-#define MCO2_H_
+#ifndef GRAPH_H_INCLUDED
+#define GRAPH_H_INCLUDED
 #include <stdio.h>
 
 typedef char Str16[17];
@@ -10,24 +10,6 @@ typedef struct nodeTag
     Str16 name;
     struct nodeTag *connectedNode;
 } Node;
-
-typedef struct qNodeTag
-{
-    Str20 cToken;
-    struct qNodeTag *nextNode;
-} qNode;
-
-typedef struct queueTag
-{
-    struct qNodeTag *head;
-    struct qNodeTag *tail;
-} Queue;
-
-typedef struct stackTag
-{
-    Str20 cToken;
-    struct stackTag *nextNode;
-} Stack;
 
 void initStr16(Str16 s);
 void initGraph(struct nodeTag *graph, int size);

@@ -1,6 +1,6 @@
+#include "Queue.h"
 #include <stdio.h>
 #include <string.h>
-#include "Queue.h"
 
 void initStr20(Str20 str)
 {
