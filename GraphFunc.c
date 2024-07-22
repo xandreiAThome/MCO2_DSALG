@@ -179,6 +179,7 @@ DFS = a search algorithm for traversing a tree or graph data structure
     Put the first node in the stack -> Push all the unvisited to the stack until it reaches a dead end or another visited -> Back track until it sees another node that has a unvisited adjacent -> Pop everything until the one with unvisited adjacent -> repeat
 */
 
+
 void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
 {
     Stack *s = NULL;
@@ -220,3 +221,23 @@ void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFil
     fprintf(outputFile, "\n");
     printf("\n");
 }
+
+/*
+void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
+{
+    printf("%s ", graph[0].name);
+    printf("%s \n", graph[0].connectedNode->name);
+
+    printf("%s ", graph[1].name);
+    printf("%s ", graph[1].connectedNode->name);
+    printf("%s ", graph[1].connectedNode->connectedNode->name);
+
+    printf("\n%s ", graph[2].name);
+    printf("%s ", graph[2].connectedNode->name);
+
+    printf("%s ", graph[3].name);
+    printf("%s ", graph[2].connectedNode->name);
+
+
+}
+*/
