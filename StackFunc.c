@@ -1,7 +1,7 @@
+#include "Stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Stack.h"
 
 // TO Make a new Stack just declare a Stack pointer variable and init it to NULL
 
