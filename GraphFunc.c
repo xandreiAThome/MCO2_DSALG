@@ -215,8 +215,6 @@ DFS = a search algorithm for traversing a tree or graph data structure
     1. Pick a route
     2. Keep going until you reach a dead end, or a perviously visited node
     3. Backtrack to last node that has unvisited adjacent neighbors
-
-    Put the first node in the stack -> Push all the unvisited to the stack until it reaches a dead end or another visited -> Back track until it sees another node that has a unvisited adjacent -> Pop everything until the one with unvisited adjacent -> repeat
 */
 
 /**
