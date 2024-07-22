@@ -1,12 +1,10 @@
 #include "Graph.h"
 #include "Queue.h"
-#include "Stack.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "QueueFunc.c"
-#include "StackFunc.c"
 
 /**
  * @brief Displays how many edges are connected to each node
@@ -221,45 +219,23 @@ DFS = a search algorithm for traversing a tree or graph data structure
     Put the first node in the stack -> Push all the unvisited to the stack until it reaches a dead end or another visited -> Back track until it sees another node that has a unvisited adjacent -> Pop everything until the one with unvisited adjacent -> repeat
 */
 
-void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile)
+void DFS(struct nodeTag *graph, int nodeQuanti, char *startNode, FILE *outputFile, int visited[])
 {
-    Stack *s = NULL;
-
-    int visited[nodeQuanti];
-    for (int i = 0; i < nodeQuanti; i++)
-    {
-        visited[i] = 0;
-    }
 
     int startIndex = getIndexGivenNodeToken(graph, startNode, nodeQuanti);
-
-    Push(&s, graph[startIndex].name);
     visited[startIndex] = 1;
-    fprintf(outputFile, "\nDFS: ");
-    printf("\nDFS: ");
+    printf("%s ", graph[startIndex].name);
+    fprintf(outputFile, "%s ", graph[startIndex].name);
 
-    while (!StackEmpty(s))
+    struct nodeTag *nextNode = graph[startIndex].connectedNode;
+
+    while (nextNode != NULL)
     {
-        Str16 currentNode = "";
-        Pop(&s, currentNode);
-        printf("%s ", currentNode);
-        fprintf(outputFile, "%s ", currentNode);
-
-        int currentIndex = getIndexGivenNodeToken(graph, currentNode, nodeQuanti);
-        struct nodeTag *tempNode = &graph[currentIndex];
-
-        while (tempNode->connectedNode != NULL)
+        int neighborIndex = getIndexGivenNodeToken(graph, nextNode->name, nodeQuanti);
+        if (!visited[neighborIndex])
         {
-            int neighborIndex = getIndexGivenNodeToken(graph, tempNode->connectedNode->name, nodeQuanti);
-            if (!visited[neighborIndex])
-            {
-                visited[neighborIndex] = 1;
-                Push(&s, tempNode->connectedNode->name);
-            }
-            tempNode = tempNode->connectedNode;
+            DFS(graph, nodeQuanti, graph[neighborIndex].name, outputFile, visited);
         }
+        nextNode = nextNode->connectedNode;
     }
-
-    fprintf(outputFile, "\n");
-    printf("\n");
 }

@@ -27,7 +27,15 @@ int main()
         {
             displayEdgeCount(graph, nodeAmount, outputFile);
             BFS(graph, nodeAmount, startNode, outputFile);
-            DFS(graph, nodeAmount, startNode, outputFile);
+
+            int visited[nodeAmount];
+            for (int i = 0; i < nodeAmount; i++)
+            {
+                visited[i] = 0;
+            }
+            fprintf(outputFile, "\nDFS: ");
+            printf("\nDFS: ");
+            DFS(graph, nodeAmount, startNode, outputFile, visited);
         }
     }
     fclose(outputFile);
