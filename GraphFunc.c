@@ -29,6 +29,26 @@ void displayEdgeCount(struct nodeTag *graph, int nodeAmount, FILE *outputFile)
     }
 }
 
+int getEdgeCount(struct nodeTag *graph, int nodeAmount, char *nodeName)
+{
+    for (int i = 0; i < nodeAmount; i++)
+    {
+        if (strcmp(graph[i].name, nodeName) == 0)
+        {
+            int k = 0;
+            struct nodeTag *tempNode = graph[i].connectedNode;
+            while (tempNode != NULL)
+            {
+                k++;
+                tempNode = tempNode->connectedNode;
+            }
+            return k;
+        }
+    }
+
+    return -1;
+}
+
 void initStr16(Str16 s)
 {
     for (int i = 0; i < 17; i++)
@@ -219,7 +239,7 @@ DFS = a search algorithm for traversing a tree or graph data structure
 
 /**
  * @brief gives the order of visits for the depth first search
- * 
+ *
  * @param graph
  * @param nodeQuanti
  * @param startNode
