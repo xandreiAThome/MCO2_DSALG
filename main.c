@@ -24,6 +24,7 @@ int main()
         else
         {
             FILE *outputFile = fopen("TRAVERSAL.TXT", "w");
+            fprintf(outputFile, "Start vertex of traversal: %s", startNode);
             displayEdgeCount(graph, nodeAmount, outputFile);
             BFS(graph, nodeAmount, startNode, outputFile);
 
