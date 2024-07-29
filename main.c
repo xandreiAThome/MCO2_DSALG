@@ -11,8 +11,6 @@ int main()
     scanf("%s", inputFile);
     struct nodeTag *graph = getInput(inputFile, &nodeAmount);
 
-    FILE *outputFile = fopen("TRAVERSAL.TXT", "w");
-
     if (graph != NULL)
     {
 
@@ -25,6 +23,8 @@ int main()
         }
         else
         {
+            FILE *outputFile = fopen("TRAVERSAL.TXT", "w");
+            fprintf(outputFile, "Start vertex of traversal: %s\n\n", startNode);
             displayEdgeCount(graph, nodeAmount, outputFile);
             BFS(graph, nodeAmount, startNode, outputFile);
 
@@ -36,7 +36,7 @@ int main()
             fprintf(outputFile, "\nDFS: ");
             printf("\nDFS: ");
             DFS(graph, nodeAmount, startNode, outputFile, visited);
+            fclose(outputFile);
         }
     }
-    fclose(outputFile);
 }
